@@ -3,6 +3,8 @@ package com.tistory.hadeslee.springbootcommunityweb;
 import com.tistory.hadeslee.springbootcommunityweb.domain.Board;
 import com.tistory.hadeslee.springbootcommunityweb.domain.User;
 import com.tistory.hadeslee.springbootcommunityweb.domain.enums.BoardType;
+import com.tistory.hadeslee.springbootcommunityweb.repository.BoardRepository;
+import com.tistory.hadeslee.springbootcommunityweb.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +27,7 @@ public class JpaMappingTest {
     UserRepository userRepository;
 
     @Autowired
-    BoardTrpository boardTrpository;
+    BoardRepository boardRepository;
 
     @Before
     public void init() {
@@ -37,8 +39,8 @@ public class JpaMappingTest {
                 .createdDate(LocalDateTime.now())
                 .build());
 
-        boardTrpository.save(Board.builder()
-                .title(BoardTestTitle)
+        boardRepository.save(Board.builder()
+                .title(boardTestTitle)
                 .subTitle("서브 타이틀")
                 .content("콘텐츠")
                 .boardType(BoardType.free)
@@ -54,12 +56,11 @@ public class JpaMappingTest {
         assertThat(user.getPassword(), is("test"));
         assertThat(user.getEmail(), is(email));
 
-        Board board = boardTrpository.findByUser(user);
+        Board board = boardRepository.findByUser(user);
         assertThat(board.getTitle(), is(boardTestTitle));
-        assertThat(board.getSubTitle(), is("서브 타이틀");
+        assertThat(board.getSubTitle(), is("서브 타이틀"));
         assertThat(board.getContent(), is("콘텐츠"));
         assertThat(board.getBoardType(), is(BoardType.free));
 
     }
-
 }

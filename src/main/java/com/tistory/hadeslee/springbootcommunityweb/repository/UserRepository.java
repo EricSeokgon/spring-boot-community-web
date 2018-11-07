@@ -5,5 +5,5 @@ import com.tistory.hadeslee.springbootcommunityweb.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    Board findByEmail(String email);
+    User findByEmail(String email);
 }
