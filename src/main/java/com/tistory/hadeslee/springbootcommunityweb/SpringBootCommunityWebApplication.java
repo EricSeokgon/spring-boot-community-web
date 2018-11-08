@@ -37,7 +37,7 @@ public class SpringBootCommunityWebApplication {
                             .content("콘텐츠")
                             .boardType(BoardType.free)
                             .createdDate(LocalDateTime.now())
-                            .updateDate(LocalDateTime.now())
+                            .updatedDate(LocalDateTime.now())
                             .user(user).build())
             );
         };
