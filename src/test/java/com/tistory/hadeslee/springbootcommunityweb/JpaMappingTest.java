@@ -1,5 +1,6 @@
 package com.tistory.hadeslee.springbootcommunityweb;
 
+
 import com.tistory.hadeslee.springbootcommunityweb.domain.Board;
 import com.tistory.hadeslee.springbootcommunityweb.domain.User;
 import com.tistory.hadeslee.springbootcommunityweb.domain.enums.BoardType;
@@ -14,8 +15,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -45,7 +46,7 @@ public class JpaMappingTest {
                 .content("콘텐츠")
                 .boardType(BoardType.free)
                 .createdDate(LocalDateTime.now())
-                .updateDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
                 .user(user).build());
     }
 
