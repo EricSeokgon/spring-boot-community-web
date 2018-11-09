@@ -3,7 +3,9 @@ package com.tistory.hadeslee.springbootcommunityweb.config;
 import com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType;
 import com.tistory.hadeslee.springbootcommunityweb.oauth.ClientResources;
 import com.tistory.hadeslee.springbootcommunityweb.oauth.UserTokenService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -23,16 +25,24 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.CompositeFilter;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.Filter;
 
 import static com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType.FACEBOOK;
 import static com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType.GOOGLE;
 import static com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType.KAKAO;
 
+
+/**
+ * Created by KimYJ on 2017-09-12.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableOAuth2Client
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Qualifier("oauth2ClientContext")
     @Autowired
     private OAuth2ClientContext oAuth2ClientContext;
 
@@ -41,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         CharacterEncodingFilter filter = new CharacterEncodingFilter();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/login/**",  "/css/**", "/images/**", "/js/**", "/console/**").permitAll()
+                .antMatchers("/", "/login/**", "/css/**", "/images/**", "/js/**", "/console/**").permitAll()
                 .antMatchers("/facebook").hasAuthority(FACEBOOK.getRoleType())
                 .antMatchers("/google").hasAuthority(GOOGLE.getRoleType())
                 .antMatchers("/kakao").hasAuthority(KAKAO.getRoleType())
