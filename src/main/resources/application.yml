@@ -14,34 +14,19 @@ spring:
   devtools:
     livereload:
       enabled: true
-
-facebook :
-  client :
-    clientId : 2424790774230192
-    clientSecret: 651253212ae3f7879a2a2c92166a1069
-    accessTokenUri: https://graph.facebook.com/oauth/access_token
-    userAuthorizationUri: https://www.facebook.com/dialog/oauth?display=popup
-    tokenName: oauth_token
-    authenticationScheme: query
-    clientAuthenticationScheme: form
-    scope: email
-  resource:
-    userInfoUri: https://graph.facebook.com/me?fields=id,name,email,link
-
-google :
-  client :
-    clientId : 268473693857-gtqjjgsm3cl0ardaa40rpn004tiba64l.apps.googleusercontent.com
-    clientSecret: HxnbO3T8AfHcFR-scw-LAaWY
-    accessTokenUri: https://accounts.google.com/o/oauth2/token
-    userAuthorizationUri: https://accounts.google.com/o/oauth2/auth
-    scope: email, profile
-  resource:
-    userInfoUri: https://www.googleapis.com/oauth2/v2/userinfo
-
-kakao :
-  client :
-    clientId : spPLWhTPwDAPBaDzeWmePaQRVoHuLfsx
-    accessTokenUri: https://kauth.kakao.com/oauth/token
-    userAuthorizationUri: https://kauth.kakao.com/oauth/authorize
-  resource:
-    userInfoUri: https://kapi.kakao.com/v1/user/me
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 268473693857-gtqjjgsm3cl0ardaa40rpn004tiba64l.apps.googleusercontent.com
+            client-secret: HxnbO3T8AfHcFR-scw-LAaWY
+          facebook:
+            client-id: 2424790774230192
+            client-secret: 651253212ae3f7879a2a2c92166a1069
+custom:
+  oauth2:
+    kakao:
+      client-id: spPLWhTPwDAPBaDzeWmePaQRVoHuLfsx
