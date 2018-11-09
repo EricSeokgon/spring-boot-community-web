@@ -1,8 +1,6 @@
 package com.tistory.hadeslee.springbootcommunityweb.config;
 
 import com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType;
-import com.tistory.hadeslee.springbootcommunityweb.oauth.ClientResources;
-import com.tistory.hadeslee.springbootcommunityweb.oauth.UserTokenService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
