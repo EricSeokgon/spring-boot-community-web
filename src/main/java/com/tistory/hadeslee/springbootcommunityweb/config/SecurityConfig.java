@@ -2,6 +2,7 @@ package com.tistory.hadeslee.springbootcommunityweb.config;
 
 import com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType;
 import com.tistory.hadeslee.springbootcommunityweb.oauth.ClientResources;
+import com.tistory.hadeslee.springbootcommunityweb.oauth.UserTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -22,6 +23,10 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.CompositeFilter;
 
 import java.util.ArrayList;
+
+import static com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType.FACEBOOK;
+import static com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType.GOOGLE;
+import static com.tistory.hadeslee.springbootcommunityweb.domain.enums.SocialType.KAKAO;
 
 @Configuration
 @EnableWebSecurity

@@ -1,5 +1,7 @@
 package com.tistory.hadeslee.springbootcommunityweb.controller;
 
+import com.tistory.hadeslee.springbootcommunityweb.annotation.SocialUser;
+import com.tistory.hadeslee.springbootcommunityweb.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,8 +16,8 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/loginSuccess")
-    public String loginComplete() {
+    @GetMapping(value = "/{facebook|google|kakao}/complete")
+    public String loginComplete(@SocialUser User user) {
         return "redirect:/board/list";
     }
 }
